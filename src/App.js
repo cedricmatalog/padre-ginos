@@ -1,10 +1,14 @@
+import { createElement } from "react";
+import { createRoot } from "react-dom/client";
+
 const Pizza = (props) => {
-  return React.createElement("div", {}, [
-    React.createElement("h1", {}, props.title),
-    React.createElement("p", {}, props.description),
+  return createElement("div", {}, [
+    createElement("h1", {}, props.title),
+    createElement("p", {}, props.description),
   ]);
 };
 
+//eslint-disable-next-line no-unused-vars
 const pizzaData = [
   {
     title: "Margherita",
@@ -29,35 +33,30 @@ const pizzaData = [
 ];
 
 const App = () => {
-  return React.createElement(
-    "div",
-    null,
-    React.createElement("h1", {}, "Padre Gino's"),
-    [
-      React.createElement(Pizza, {
-        title: "Margherita",
-        description: "Classic pizza with tomato sauce and mozzarella",
-      }),
-      React.createElement(Pizza, {
-        title: "Pepperoni",
-        description: "Spicy pepperoni with mozzarella and tomato sauce",
-      }),
-      React.createElement(Pizza, {
-        title: "Vegetarian",
-        description: "Loaded with fresh vegetables and mozzarella",
-      }),
-      React.createElement(Pizza, {
-        title: "BBQ Chicken",
-        description: "Grilled chicken with BBQ sauce and red onions",
-      }),
-      React.createElement(Pizza, {
-        title: "Hawaiian",
-        description: "Ham and pineapple with mozzarella",
-      }),
-    ],
-  );
+  return createElement("div", null, createElement("h1", {}, "Padre Gino's"), [
+    createElement(Pizza, {
+      title: "Margherita",
+      description: "Classic pizza with tomato sauce and mozzarella",
+    }),
+    createElement(Pizza, {
+      title: "Pepperoni",
+      description: "Spicy pepperoni with mozzarella and tomato sauce",
+    }),
+    createElement(Pizza, {
+      title: "Vegetarian",
+      description: "Loaded with fresh vegetables and mozzarella",
+    }),
+    createElement(Pizza, {
+      title: "BBQ Chicken",
+      description: "Grilled chicken with BBQ sauce and red onions",
+    }),
+    createElement(Pizza, {
+      title: "Hawaiian",
+      description: "Ham and pineapple with mozzarella",
+    }),
+  ]);
 };
 
 const container = document.getElementById("root");
-const root = ReactDOM.createRoot(container);
-root.render(React.createElement(App, null));
+const root = createRoot(container);
+root.render(createElement(App, null));
