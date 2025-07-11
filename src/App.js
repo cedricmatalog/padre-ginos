@@ -54,7 +54,7 @@ const App = () => {
         title: "Hawaiian",
         description: "Ham and pineapple with mozzarella",
       }),
-    ]
+    ],
   );
 };
 
