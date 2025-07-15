@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 
 import Pizza from "./Pizza";
+import Order from "./Order";
 
 const pizzaData = [
   {
@@ -38,10 +39,8 @@ const pizzaData = [
 const App = () => {
   return (
     <div>
-      <h1>Padre Gino's</h1>
-      {pizzaData.map((pizza, index) => (
-        <Pizza key={index} {...pizza} />
-      ))}
+      <h1>Padre Gino's '- Order now</h1>
+      <Order />
     </div>
   );
 };
