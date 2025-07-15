@@ -1,11 +1,34 @@
+import { use, useEffect, useState } from "react";
 import Pizza from "./Pizza";
 
 export default function Order() {
-  const pizzaType = "Pepperoni";
-  const pizzaSize = "M";
+  const [pizzaType, setPizzaType] = useState("Pepperoni");
+  const [pizzaSize, setPizzaSize] = useState("M");
 
   const pizzaTypes = ["Margherita", "Pepperoni", "Veggie"];
-  const pizzaSizes = ["S", "M", "L"];
+  const pizzaSizes = [
+    { label: "Small", value: "S" },
+    { label: "Medium", value: "M" },
+    { label: "Large", value: "L" },
+  ];
+
+  const handlePizzaTypeChange = (event) => {
+    setPizzaType(event.target.value);
+  };
+
+  const handlePizzaSizeChange = (event) => {
+    setPizzaSize(event.target.value);
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Logic to add the pizza to the cart can be added here
+    console.log(`Added ${pizzaType} (${pizzaSize}) to cart`);
+  };
+
+  useEffect(() => {
+    // This effect can be used to fetch pizza types or sizes from an API if needed
+    console.log(`Selected pizza type: ${pizzaType}, size: ${pizzaSize}`);
+  }, [pizzaType, pizzaSize]);
 
   return (
     <div className="order">
@@ -15,7 +38,11 @@ export default function Order() {
         <div>
           <div>
             <label htmlFor="pizza-type">Pizza Type:</label>
-            <select name="pizza-type" value={pizzaType}>
+            <select
+              name="pizza-type"
+              value={pizzaType}
+              onChange={handlePizzaTypeChange}
+            >
               {pizzaTypes.map((type) => (
                 <option key={type} value={type}>
                   {type}
@@ -26,16 +53,18 @@ export default function Order() {
           <div>
             <label htmlFor="pizza-size">Pizza Size:</label>
             <div>
-              {pizzaSizes.map((size) => (
-                <span key={size}>
+              {pizzaSizes.map(({ label, value }) => (
+                <span key={value}>
                   <input
-                    id={`pizza-${size}`}
-                    checked={pizzaSize === size}
+                    checked={pizzaSize === value}
                     type="radio"
                     name="pizza-size"
-                    value={size}
+                    value={value}
+                    id={`pizza-${value}`}
+                    onChange={handlePizzaSizeChange}
                   />
-                  {size}
+
+                  <label htmlFor={`pizza-${value}`}>{label}</label>
                 </span>
               ))}
             </div>
