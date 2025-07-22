@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import Pizza from "./Pizza";
-
-const intl = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
+import { intl } from "./utils";
 
 export default function Order() {
   const [pizzaTypes, setPizzaTypes] = useState([]);
@@ -20,6 +16,9 @@ export default function Order() {
   }
 
   async function fetchPizzaTypes() {
+    // wait for 1 second to simulate loading
+    setLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     try {
       const response = await fetch("/api/pizzas");
       if (!response.ok) {
