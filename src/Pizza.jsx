@@ -8,9 +8,7 @@ const Pizza = ({ title, description, image, name }) => {
 
   return (
     <div className="pizza">
-      <h1>
-        {name} {counter}
-      </h1>
+      <h1>{name}</h1>
       <p>{description}</p>
       {!image || imgError ? (
         <p>Image not available</p>

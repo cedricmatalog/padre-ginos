@@ -1,11 +1,55 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Pizza from "./Pizza";
 
+const intl = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+});
+
 export default function Order() {
+  const [pizzaTypes, setPizzaTypes] = useState([]);
   const [pizzaType, setPizzaType] = useState("Pepperoni");
   const [pizzaSize, setPizzaSize] = useState("M");
+  const [loading, setLoading] = useState(true);
 
-  const pizzaTypes = ["Margherita", "Pepperoni", "Veggie"];
+  let price, selectedPizza;
+
+  if (!loading) {
+    selectedPizza = pizzaTypes.find((pizza) => pizzaType === pizza.id);
+    price = intl.format(selectedPizza?.sizes[pizzaSize]);
+  }
+
+  async function fetchPizzaTypes() {
+    try {
+      const response = await fetch("/api/pizzas");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+
+      console.log("Fetched pizza types:", data);
+      setPizzaTypes(data);
+
+      setPizzaType(data[0]?.id || "Pepperoni");
+      setLoading(false);
+    } catch (error) {
+      console.error("Failed to fetch pizza types:", error);
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchPizzaTypes();
+
+    return () => {
+      // Cleanup if necessary
+      setPizzaTypes([]);
+      setPizzaType("Pepperoni");
+      setPizzaSize("M");
+    };
+  }, []);
+
+  // const pizzaTypes = ["Margherita", "Pepperoni", "Veggie"];
   const pizzaSizes = [
     { label: "Small", value: "S" },
     { label: "Medium", value: "M" },
@@ -13,6 +57,7 @@ export default function Order() {
   ];
 
   const handlePizzaTypeChange = (event) => {
+    console.log("Pizza type changed:", event.target.value);
     setPizzaType(event.target.value);
   };
 
@@ -25,10 +70,10 @@ export default function Order() {
     console.log(`Added ${pizzaType} (${pizzaSize}) to cart`);
   };
 
-  useEffect(() => {
-    // This effect can be used to fetch pizza types or sizes from an API if needed
-    console.log(`Selected pizza type: ${pizzaType}, size: ${pizzaSize}`);
-  }, [pizzaType, pizzaSize]);
+  // useEffect(() => {
+  //   // This effect can be used to fetch pizza types or sizes from an API if needed
+  //   console.log(`Selected pizza type: ${pizzaType}, size: ${pizzaSize}`);
+  // }, [pizzaType, pizzaSize]);
 
   return (
     <div className="order">
@@ -43,9 +88,9 @@ export default function Order() {
               value={pizzaType}
               onChange={handlePizzaTypeChange}
             >
-              {pizzaTypes.map((type) => (
-                <option key={type} value={type}>
-                  {type}
+              {pizzaTypes.map(({ id, name }) => (
+                <option key={id} value={id}>
+                  {name}
                 </option>
               ))}
             </select>
@@ -72,13 +117,18 @@ export default function Order() {
           <button type="submit">Add to Cart</button>
         </div>
         <div className="order-pizza">
-          <Pizza
-            title={pizzaType}
-            description="Delicious pizza with fresh ingredients."
-            image="/public/pizzas/pepperoni.jpg"
-            name={pizzaType}
-          />
-          <p>$13.37</p>
+          {loading ? (
+            <p>Loading pizza...</p>
+          ) : (
+            <Pizza
+              title={selectedPizza.name}
+              description={selectedPizza.description}
+              image={selectedPizza.image}
+              name={selectedPizza.name}
+            />
+          )}
+
+          <p>{price}</p>
         </div>
       </form>
     </div>
