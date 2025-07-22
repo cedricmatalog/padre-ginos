@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import Pizza from "./Pizza";
 import { intl } from "./utils";
+import Cart from "./Cart"; // Assuming you have a Cart component
 
 export default function Order() {
   const [pizzaTypes, setPizzaTypes] = useState([]);
   const [pizzaType, setPizzaType] = useState("Pepperoni");
   const [pizzaSize, setPizzaSize] = useState("M");
+  const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
 
   let price, selectedPizza;
@@ -67,6 +69,15 @@ export default function Order() {
     event.preventDefault();
     // Logic to add the pizza to the cart can be added here
     console.log(`Added ${pizzaType} (${pizzaSize}) to cart`);
+
+    setCart((prevCart) => [
+      ...prevCart,
+      {
+        pizza: selectedPizza,
+        size: pizzaSize,
+        price: selectedPizza.sizes[pizzaSize],
+      },
+    ]);
   };
 
   // useEffect(() => {
@@ -78,7 +89,7 @@ export default function Order() {
     <div className="order">
       <h2>Create Order</h2>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <div>
             <label htmlFor="pizza-type">Pizza Type:</label>
@@ -130,6 +141,7 @@ export default function Order() {
           <p>{price}</p>
         </div>
       </form>
+      {cart.length > 0 && <Cart cart={cart} />}
     </div>
   );
 }

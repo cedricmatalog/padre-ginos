@@ -1,11 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useDebugValue } from "react";
 
 export const usePizzaOfTheDay = () => {
   const [pizza, setPizza] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  useDebugValue(pizza ? pizza.name : "No pizza of the day");
+
   useEffect(() => {
     const fetchPizzaOfTheDay = async () => {
+      // simulate delay for demonstration purposes
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       try {
         const response = await fetch("/api/pizza-of-the-day");
         if (!response.ok) {
