@@ -17,6 +17,19 @@ export default function Order() {
     price = intl.format(selectedPizza?.sizes[pizzaSize]);
   }
 
+  async function checkout() {
+    setLoading(true);
+
+    await fetch("/api/order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ cart }),
+    });
+
+    setCart([]);
+    setLoading(false);
+  }
+
   async function fetchPizzaTypes() {
     // wait for 1 second to simulate loading
     setLoading(true);
@@ -86,62 +99,64 @@ export default function Order() {
   // }, [pizzaType, pizzaSize]);
 
   return (
-    <div className="order">
-      <h2>Create Order</h2>
+    <div className="order-page">
+      <div className="order">
+        <h2>Create Order</h2>
 
-      <form onSubmit={handleSubmit}>
-        <div>
+        <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="pizza-type">Pizza Type:</label>
-            <select
-              name="pizza-type"
-              value={pizzaType}
-              onChange={handlePizzaTypeChange}
-            >
-              {pizzaTypes.map(({ id, name }) => (
-                <option key={id} value={id}>
-                  {name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label htmlFor="pizza-size">Pizza Size:</label>
             <div>
-              {pizzaSizes.map(({ label, value }) => (
-                <span key={value}>
-                  <input
-                    checked={pizzaSize === value}
-                    type="radio"
-                    name="pizza-size"
-                    value={value}
-                    id={`pizza-${value}`}
-                    onChange={handlePizzaSizeChange}
-                  />
-
-                  <label htmlFor={`pizza-${value}`}>{label}</label>
-                </span>
-              ))}
+              <label htmlFor="pizza-type">Pizza Type:</label>
+              <select
+                name="pizza-type"
+                value={pizzaType}
+                onChange={handlePizzaTypeChange}
+              >
+                {pizzaTypes.map(({ id, name }) => (
+                  <option key={id} value={id}>
+                    {name}
+                  </option>
+                ))}
+              </select>
             </div>
+            <div>
+              <label htmlFor="pizza-size">Pizza Size:</label>
+              <div>
+                {pizzaSizes.map(({ label, value }) => (
+                  <span key={value}>
+                    <input
+                      checked={pizzaSize === value}
+                      type="radio"
+                      name="pizza-size"
+                      value={value}
+                      id={`pizza-${value}`}
+                      onChange={handlePizzaSizeChange}
+                    />
+
+                    <label htmlFor={`pizza-${value}`}>{label}</label>
+                  </span>
+                ))}
+              </div>
+            </div>
+            <button type="submit">Add to Cart</button>
           </div>
-          <button type="submit">Add to Cart</button>
-        </div>
-        <div className="order-pizza">
+
           {loading ? (
             <p>Loading pizza...</p>
           ) : (
-            <Pizza
-              title={selectedPizza.name}
-              description={selectedPizza.description}
-              image={selectedPizza.image}
-              name={selectedPizza.name}
-            />
+            <div className="order-pizza">
+              <Pizza
+                title={selectedPizza.name}
+                description={selectedPizza.description}
+                image={selectedPizza.image}
+                name={selectedPizza.name}
+              />
+              <p>{price}</p>
+            </div>
           )}
-
-          <p>{price}</p>
-        </div>
-      </form>
-      {cart.length > 0 && <Cart cart={cart} />}
+        </form>
+      </div>
+      {!loading && <Cart cart={cart} checkout={checkout} />}
     </div>
   );
 }
