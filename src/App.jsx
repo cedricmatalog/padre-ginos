@@ -1,17 +1,23 @@
-import { StrictMode } from "react";
+import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
 
 import Order from "./Order";
 import PizzaoOfTheDay from "./PizzaoOfTheDay";
+import Header from "./Header";
+import { CartContext } from "./contexts";
 
 const App = () => {
+  const cartHook = useState([]);
+
   return (
     <StrictMode>
-      <div>
-        <h1 className="logo">Padre Gino's '- Order now</h1>
-        <Order />
-        <PizzaoOfTheDay />
-      </div>
+      <CartContext.Provider value={cartHook}>
+        <div>
+          <Header />
+          <Order />
+          <PizzaoOfTheDay />
+        </div>
+      </CartContext.Provider>
     </StrictMode>
   );
 };
