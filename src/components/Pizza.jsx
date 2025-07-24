@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BASE_URL } from "../config";
 
 const Pizza = ({ description, image, name }) => {
   const [imgError, setImgError] = useState(false);
@@ -10,7 +11,11 @@ const Pizza = ({ description, image, name }) => {
       {!image || imgError ? (
         <p>Image not available</p>
       ) : (
-        <img src={image} alt={name} onError={() => setImgError(true)} />
+        <img
+          src={`${BASE_URL}${image}`}
+          alt={name}
+          onError={() => setImgError(true)}
+        />
       )}
     </div>
   );

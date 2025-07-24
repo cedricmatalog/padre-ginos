@@ -1,3 +1,4 @@
+import { BASE_URL } from "../config";
 import { usePizzaOfTheDay } from "../hooks/usePizzaOfTheDay";
 import { intl } from "../utils";
 
@@ -29,7 +30,7 @@ const PizzaoOfTheDay = () => {
         </div>
         <img
           className="pizza-of-the-day-image"
-          src={pizza.image}
+          src={`${BASE_URL}${pizza.image}`}
           alt={pizza.name}
         />
       </div>
