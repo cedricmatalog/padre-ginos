@@ -25,12 +25,15 @@
   },
   "homepage": "https://github.com/cedricmatalog/padre-ginos#readme",
   "dependencies": {
+    "@tanstack/react-query": "^5.83.0",
     "@tanstack/react-router": "^1.129.8",
-    "@tanstack/react-router-devtools": "^1.129.8",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.81.2",
+    "@tanstack/react-query-devtools": "^5.83.0",
+    "@tanstack/react-router-devtools": "^1.129.8",
     "@tanstack/router-plugin": "^1.129.8",
     "@vitejs/plugin-react": "^4.6.0",
     "eslint": "^9.30.1",
