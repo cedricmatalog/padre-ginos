@@ -1,8 +1,10 @@
 import { useState, useEffect, useDebugValue } from "react";
+import { getPizzaOfTheDay } from "../api";
 
 export const usePizzaOfTheDay = () => {
   const [pizza, setPizza] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useDebugValue(pizza ? pizza.name : "No pizza of the day");
 
@@ -11,14 +13,11 @@ export const usePizzaOfTheDay = () => {
       // simulate delay for demonstration purposes
       await new Promise((resolve) => setTimeout(resolve, 1000));
       try {
-        const response = await fetch("/api/pizza-of-the-day");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
+        const data = await getPizzaOfTheDay();
         setPizza(data);
       } catch (error) {
         console.error("Failed to fetch pizza of the day:", error);
+        setError(error);
       } finally {
         setLoading(false);
       }
@@ -27,5 +26,5 @@ export const usePizzaOfTheDay = () => {
     fetchPizzaOfTheDay();
   }, []);
 
-  return { pizza, loading };
+  return { pizza, loading, error };
 };

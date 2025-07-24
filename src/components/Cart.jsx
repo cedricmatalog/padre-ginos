@@ -1,4 +1,4 @@
-import { intl } from "./utils";
+import { intl } from "../utils";
 
 const Cart = ({ cart, checkout }) => {
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
@@ -11,7 +11,7 @@ const Cart = ({ cart, checkout }) => {
       ) : (
         <ul>
           {cart.map((item, index) => (
-            <li key={index}>
+            <li key={`${item.pizza.id}-${item.size}-${index}`}>
               <span className="size">{item.size}</span> -
               <span className="type">{item.pizza.name}</span> -
               <span className="price">{intl.format(item.price)}</span>

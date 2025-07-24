@@ -1,9 +1,6 @@
 import { useState } from "react";
 
-let counter = 0;
-
-const Pizza = ({ title, description, image, name }) => {
-  counter = counter++;
+const Pizza = ({ description, image, name }) => {
   const [imgError, setImgError] = useState(false);
 
   return (

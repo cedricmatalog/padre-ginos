@@ -1,18 +1,20 @@
-import { usePizzaOfTheDay } from "./usePizzaOfTheDay";
-import { intl } from "./utils";
+import { usePizzaOfTheDay } from "../hooks/usePizzaOfTheDay";
+import { intl } from "../utils";
 
 const PizzaoOfTheDay = () => {
-  const { pizza, loading } = usePizzaOfTheDay();
+  const { pizza, loading, error } = usePizzaOfTheDay();
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   if (!pizza) {
     return <div>No pizza of the day available.</div>;
   }
-
-  const {} = pizza;
 
   return (
     <div className="pizza-of-the-day">

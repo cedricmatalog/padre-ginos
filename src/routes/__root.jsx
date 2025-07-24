@@ -3,8 +3,8 @@ import { createRootRoute, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
 import { CartContext } from "../contexts";
-import Header from "../Header";
-import PizzaoOfTheDay from "../PizzaoOfTheDay";
+import Header from "../components/Header";
+import PizzaoOfTheDay from "../components/PizzaoOfTheDay";
 
 export const Route = createRootRoute({
   component: () => {
