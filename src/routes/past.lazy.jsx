@@ -7,10 +7,19 @@ import getPastOrder from "../api/getPastOrder";
 import Modal from "../components/Modal";
 import { intl } from "../utils";
 import { BASE_URL } from "../config";
+import ErrorBoundary from "../ErrorBoundary";
 
 export const Route = createLazyFileRoute("/past")({
-  component: PastOrders,
+  component: PastOrdersWrappedWithErrorBoundary,
 });
+
+function PastOrdersWrappedWithErrorBoundary(props) {
+  return (
+    <ErrorBoundary>
+      <PastOrders {...props} />
+    </ErrorBoundary>
+  );
+}
 
 function PastOrders() {
   const [page, setPage] = useState(1);

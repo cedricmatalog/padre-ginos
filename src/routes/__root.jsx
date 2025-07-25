@@ -6,6 +6,7 @@ import { CartContext } from "../contexts";
 import Header from "../components/Header";
 import PizzaoOfTheDay from "../components/PizzaoOfTheDay";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import ErrorBoundary from "../ErrorBoundary";
 
 export const Route = createRootRoute({
   component: () => {
