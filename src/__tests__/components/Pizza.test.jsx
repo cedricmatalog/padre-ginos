@@ -1,7 +1,7 @@
 import { render, cleanup } from "@testing-library/react";
 import { expect, test, vi, afterEach } from "vitest";
 
-import Pizza from "../components/Pizza";
+import Pizza from "../../components/Pizza";
 
 vi.mock("../lib/config", () => ({
   BASE_URL: "",

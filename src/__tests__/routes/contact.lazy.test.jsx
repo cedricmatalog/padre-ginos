@@ -4,8 +4,8 @@ import { expect, test, vi, afterEach } from "vitest";
 import createFetchMock from "vitest-fetch-mock";
 
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { Route } from "../routes/contact.lazy";
-import { BASE_URL } from "../lib/config";
+import { Route } from "../../routes/contact.lazy";
+import { BASE_URL } from "../../lib/config";
 
 const queryClient = new QueryClient();
 const fetchMocker = createFetchMock(vi);
