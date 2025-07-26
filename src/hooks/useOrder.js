@@ -64,11 +64,7 @@ export const useOrder = () => {
   const handlePizzaSizeChange = (event) => {
     setPizzaSize(event.target.value);
   };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Logic to add the pizza to the cart can be added here
-    console.log(`Added ${pizzaType} (${pizzaSize}) to cart`);
-
+  const handleSubmit = () => {
     setCart((prevCart) => [
       ...prevCart,
       {

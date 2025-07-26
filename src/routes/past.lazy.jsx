@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Suspense, use } from "react";
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 
@@ -13,23 +13,37 @@ export const Route = createLazyFileRoute("/past")({
   component: PastOrdersWrappedWithErrorBoundary,
 });
 
-function PastOrdersWrappedWithErrorBoundary(props) {
+function PastOrdersWrappedWithErrorBoundary() {
+  const [page, setPage] = useState(1);
+
+  const loadedPromise = useQuery({
+    queryKey: ["past-orders", page],
+    queryFn: () => getPastOrders(page),
+    staleTime: 30000, // 30 seconds
+  }).promise;
+
   return (
     <ErrorBoundary>
-      <PastOrders {...props} />
+      <Suspense
+        fallback={
+          <div className="past-orders">
+            <h2>Loading...</h2>
+          </div>
+        }
+      >
+        <PastOrders
+          loadedPromise={loadedPromise}
+          page={page}
+          setPage={setPage}
+        />
+      </Suspense>
     </ErrorBoundary>
   );
 }
 
-function PastOrders() {
-  const [page, setPage] = useState(1);
+function PastOrders({ loadedPromise, page, setPage }) {
   const [selectedOrder, setSelectedOrder] = useState(null);
-
-  const { data, error, isLoading } = useQuery({
-    queryKey: ["past-orders", page],
-    queryFn: () => getPastOrders(page),
-    staleTime: 30000, // 30 seconds
-  });
+  const data = use(loadedPromise);
 
   const { data: pastOrderData, isLoading: isLoadingPastOrder } = useQuery({
     queryKey: ["past-order", selectedOrder],
@@ -38,20 +52,20 @@ function PastOrders() {
     enabled: !!selectedOrder, // Only run if selectedOrder is set
   });
 
-  if (isLoading) {
-    return (
-      <div className="past-orders">
-        <h2>Loading...</h2>
-      </div>
-    );
-  }
-  if (error) {
-    return (
-      <div className="past-orders">
-        <h2>Error: {error.message}</h2>
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="past-orders">
+  //       <h2>Loading...</h2>
+  //     </div>
+  //   );
+  // }
+  // if (error) {
+  //   return (
+  //     <div className="past-orders">
+  //       <h2>Error: {error.message}</h2>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="past-orders">

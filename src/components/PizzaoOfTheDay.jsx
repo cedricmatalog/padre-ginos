@@ -6,7 +6,7 @@ const PizzaoOfTheDay = () => {
   const { pizza, loading, error } = usePizzaOfTheDay();
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <h2>Loading...</h2>;
   }
 
   if (error) {
