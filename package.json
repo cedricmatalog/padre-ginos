@@ -44,6 +44,7 @@
     "happy-dom": "^18.0.1",
     "prettier": "^3.6.2",
     "vite": "^7.0.4",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "vitest-fetch-mock": "^0.3.0"
   }
 }
