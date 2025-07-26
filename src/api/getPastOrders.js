@@ -1,4 +1,4 @@
-import { BASE_URL } from "../config";
+import { BASE_URL } from "../lib/config";
 
 export default async function getPastOrders(page) {
   const response = await fetch(`${BASE_URL}/api/past-orders?page=${page}`);

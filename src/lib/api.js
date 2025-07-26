@@ -1,4 +1,4 @@
-import { BASE_URL } from "./config";
+import { BASE_URL } from "../lib/config";
 
 export const getPizzaTypes = async () => {
   const response = await fetch(`${BASE_URL}/api/pizzas`);

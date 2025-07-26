@@ -6,7 +6,7 @@ import getPastOrders from "../api/getPastOrders";
 import getPastOrder from "../api/getPastOrder";
 import Modal from "../components/Modal";
 import { intl } from "../utils";
-import { BASE_URL } from "../config";
+import { BASE_URL } from "../lib/config";
 import ErrorBoundary from "../ErrorBoundary";
 
 export const Route = createLazyFileRoute("/past")({

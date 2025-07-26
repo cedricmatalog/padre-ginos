@@ -1,4 +1,4 @@
-import { BASE_URL } from "../config";
+import { BASE_URL } from "../lib/config";
 import { usePizzaOfTheDay } from "../hooks/usePizzaOfTheDay";
 import { intl } from "../utils";
 

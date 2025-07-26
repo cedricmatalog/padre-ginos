@@ -3,7 +3,7 @@ import { expect, test, vi, afterEach } from "vitest";
 
 import Pizza from "../components/Pizza";
 
-vi.mock("../config", () => ({
+vi.mock("../lib/config", () => ({
   BASE_URL: "",
 }));
 

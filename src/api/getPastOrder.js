@@ -1,4 +1,4 @@
-import { BASE_URL } from "../config";
+import { BASE_URL } from "../lib/config";
 
 export default async function getPastOrder(orderId) {
   // console.log("Fetching past order with ID:", orderId); // Debugging line

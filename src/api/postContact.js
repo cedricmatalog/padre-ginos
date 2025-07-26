@@ -1,4 +1,4 @@
-import { BASE_URL } from "../config";
+import { BASE_URL } from "../lib/config";
 
 export default async function postContact(name, email, message) {
   console.log({ name, email, message }); // Debugging line
