@@ -3,9 +3,7 @@ import { BASE_URL } from "../lib/config";
 
 const Pizza = ({ description, image, name }) => {
   const [imgError, setImgError] = useState(false);
-  console.log({ image });
 
-  console.log(image ? `${BASE_URL}${image}` : "https://picsum.photos/200");
   return (
     <div className="pizza">
       <h1>{name}</h1>

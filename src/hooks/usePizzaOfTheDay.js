@@ -1,5 +1,5 @@
 import { useState, useEffect, useDebugValue } from "react";
-import { getPizzaOfTheDay } from "../api";
+import { getPizzaOfTheDay } from "../lib/api";
 
 export const usePizzaOfTheDay = () => {
   const [pizza, setPizza] = useState(null);

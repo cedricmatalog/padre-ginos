@@ -2,11 +2,10 @@ import { useState } from "react";
 import { createRootRoute, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
-import { CartContext } from "../contexts";
+import { CartContext } from "../lib/contexts";
 import Header from "../components/Header";
 import PizzaoOfTheDay from "../components/PizzaoOfTheDay";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import ErrorBoundary from "../ErrorBoundary";
 
 export const Route = createRootRoute({
   component: () => {

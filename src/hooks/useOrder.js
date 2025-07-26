@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-import { CartContext } from "../contexts";
+import { CartContext } from "../lib/contexts";
 import { intl } from "../utils";
 import { DEFAULT_PIZZA_TYPE, DEFAULT_PIZZA_SIZE } from "../lib/config";
-import { getPizzaTypes, createOrder } from "../api";
+import { getPizzaTypes, createOrder } from "../lib/api";
 
 export const useOrder = () => {
   const [pizzaTypes, setPizzaTypes] = useState([]);
