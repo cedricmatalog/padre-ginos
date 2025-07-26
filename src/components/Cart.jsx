@@ -1,3 +1,4 @@
+import React from "react";
 import { intl } from "../utils";
 
 const Cart = ({ cart, checkout }) => {

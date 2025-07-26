@@ -12,7 +12,7 @@ const Pizza = ({ description, image, name }) => {
         <p>Image not available</p>
       ) : (
         <img
-          src={image ? ` ${BASE_URL} ${image}` : "https://picsum.photos/200"}
+          src={image ? `${BASE_URL}${image}` : "https://picsum.photos/200"}
           alt={name}
           onError={() => setImgError(true)}
         />

@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { render } from "@testing-library/react";
+import { render } from "vitest-browser-react";
 import Cart from "../../components/Cart";
 
 test("snapshot with nothing in cart", () => {
