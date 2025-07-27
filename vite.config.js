@@ -22,6 +22,8 @@ export default defineConfig({
     tanstackRouter({
       target: "react",
       autoCodeSplitting: true,
+      routesDirectory: "./src/pages",
+      generatedRouteTree: "./src/app/routeTree.gen.ts",
     }),
     react({
       babel: {
