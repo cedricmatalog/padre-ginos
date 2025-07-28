@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { BASE_URL } from "../../../shared/config/constants";
+import type { PizzaProps } from "../../../shared/types";
 
-const Pizza = ({ description, image, name }) => {
-  const [imgError, setImgError] = useState(false);
+const Pizza: React.FC<PizzaProps> = ({ description, image, name }) => {
+  const [imgError, setImgError] = useState<boolean>(false);
 
   return (
     <div className="pizza">

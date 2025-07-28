@@ -1,6 +1,7 @@
-import { intl } from "../../../shared/utils";
+import { formatPrice } from "../../../shared/utils/formatting";
+import type { CartProps } from "../../../shared/types";
 
-const Cart = ({ cart, checkout }) => {
+const Cart: React.FC<CartProps> = ({ cart, checkout }) => {
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
   return (
@@ -14,12 +15,12 @@ const Cart = ({ cart, checkout }) => {
             <li key={`${item.pizza.id}-${item.size}-${index}`}>
               <span className="size">{item.size}</span> -
               <span className="type">{item.pizza.name}</span> -
-              <span className="price">{intl.format(item.price)}</span>
+              <span className="price">{formatPrice(item.price)}</span>
             </li>
           ))}
         </ul>
       )}
-      <p>Total: {intl.format(totalPrice)}</p>
+      <p>Total: {formatPrice(totalPrice)}</p>
       <button onClick={checkout} disabled={cart.length === 0}>
         Checkout
       </button>

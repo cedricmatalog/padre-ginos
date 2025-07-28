@@ -5,6 +5,7 @@ A React pizza ordering application built with modern tools and maintainable arch
 ## Tech Stack
 
 - **React 19** with Vite
+- **TypeScript** for type safety
 - **TanStack Router** for routing
 - **TanStack React Query** for data fetching
 - **Vitest** for testing (including browser tests with Playwright)
@@ -98,6 +99,9 @@ npm run lint
 
 # Format code
 npm run format
+
+# Type check
+npm run type-check
 ```
 
 ## Testing

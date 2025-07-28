@@ -8,11 +8,12 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier --write \"src/**/*.{js,jsx,json,css}\"",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css}\"",
     "lint": "eslint",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "coverage": "vitest --coverage"
+    "coverage": "vitest --coverage",
+    "type-check": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,9 @@
     "@tanstack/react-router-devtools": "^1.129.8",
     "@tanstack/router-plugin": "^1.129.8",
     "@testing-library/react": "^16.3.0",
+    "@types/node": "^24.1.0",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.6.0",
     "@vitest/browser": "^3.2.4",
     "@vitest/coverage-v8": "^3.2.4",
@@ -50,6 +54,7 @@
     "happy-dom": "^18.0.1",
     "playwright": "^1.54.1",
     "prettier": "^3.6.2",
+    "typescript": "^5.8.3",
     "vite": "^7.0.4",
     "vitest": "^3.2.4",
     "vitest-browser-react": "^1.0.1",

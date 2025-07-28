@@ -24,6 +24,7 @@ function Order() {
     handleSubmit,
   } = useOrder();
 
+  // Moved to constants file - import { PIZZA_SIZES } from "../shared/config/constants";
   const pizzaSizes = [
     { label: "Small", value: "S" },
     { label: "Medium", value: "M" },
