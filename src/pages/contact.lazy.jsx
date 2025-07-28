@@ -18,9 +18,9 @@ function ContactRoute() {
   });
 
   return (
-    <main className="min-h-screen bg-padre-background">
+    <main className="min-h-screen bg-padre-background transition-colors duration-200">
       {/* Hero Section */}
-      <section className="bg-white border-b border-padre-border py-12 mb-8">
+      <section className="bg-padre-background border-b border-padre-border py-12 mb-8 transition-colors duration-200">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h1 className="font-pacifico text-4xl text-padre-primary mb-4">Contact Us</h1>
           <p className="text-lg text-padre-muted">We'd love to hear from you! Send us a message.</p>
@@ -29,12 +29,12 @@ function ContactRoute() {
 
       <div className="max-w-2xl mx-auto p-6">
         {mutation.isSuccess ? (
-          <section className="bg-white rounded-lg shadow-sm border border-padre-border p-8 text-center" role="status" aria-live="polite">
+          <section className="bg-padre-background rounded-lg shadow-sm border border-padre-border p-8 text-center transition-colors duration-200" role="status" aria-live="polite">
             <h2 className="font-pacifico text-2xl text-padre-secondary mb-4">Message Sent!</h2>
             <p className="text-padre-muted">Thank you for contacting us. We'll get back to you soon.</p>
           </section>
         ) : (
-          <section className="bg-white rounded-lg shadow-sm border border-padre-border p-8" aria-labelledby="contact-form-heading">
+          <section className="bg-padre-background rounded-lg shadow-sm border border-padre-border p-8 transition-colors duration-200" aria-labelledby="contact-form-heading">
             <header className="text-center mb-8">
               <h2 id="contact-form-heading" className="font-pacifico text-2xl text-padre-primary mb-4">Send us a Message</h2>
               <div className="w-full h-px bg-padre-border"></div>

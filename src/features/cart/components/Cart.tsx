@@ -6,7 +6,7 @@ const Cart: React.FC<CartProps> = ({ cart, checkout }) => {
   const totalItems = cart.reduce((total, item) => total + (item.quantity || 1), 0);
 
   return (
-    <aside className="bg-white rounded-lg shadow-sm p-6 sticky top-8 h-fit border border-padre-border" aria-labelledby="cart-heading">
+    <aside className="bg-padre-background rounded-lg shadow-sm p-6 sticky top-8 h-fit border border-padre-border transition-colors duration-200" aria-labelledby="cart-heading">
       <header className="mb-6">
         <h2 id="cart-heading" className="font-pacifico text-2xl text-padre-primary mb-4">
           Your Cart

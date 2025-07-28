@@ -1,15 +1,42 @@
 @import "tailwindcss";
 
-/* Minimalist color palette - 3 colors only */
+/* Minimalist color palette with dark mode support */
 @theme {
-  --color-padre-primary: #1f2937;     /* Dark Gray-800 - Primary text and accents */
-  --color-padre-secondary: #f97316;   /* Orange-500 - Brand color and highlights */
-  --color-padre-background: #ffffff;  /* Pure white - Clean background */
-  --color-padre-muted: #6b7280;      /* Gray-500 - Secondary text */
-  --color-padre-light: #f9fafb;      /* Gray-50 - Subtle backgrounds */
-  --color-padre-border: #e5e7eb;     /* Gray-200 - Borders and dividers */
+  /* Light mode colors (default) */
+  --color-padre-primary-light: #1f2937;     /* Dark Gray-800 - Primary text and accents */
+  --color-padre-secondary-light: #f97316;   /* Orange-500 - Brand color and highlights */
+  --color-padre-background-light: #ffffff;  /* Pure white - Clean background */
+  --color-padre-muted-light: #6b7280;      /* Gray-500 - Secondary text */
+  --color-padre-light-light: #f9fafb;      /* Gray-50 - Subtle backgrounds */
+  --color-padre-border-light: #e5e7eb;     /* Gray-200 - Borders and dividers */
+  
+  /* Dark mode colors */
+  --color-padre-primary-dark: #f9fafb;     /* Gray-50 - Light text in dark mode */
+  --color-padre-secondary-dark: #fb923c;   /* Orange-400 - Softer orange for dark mode */
+  --color-padre-background-dark: #111827;  /* Gray-900 - Dark background */
+  --color-padre-muted-dark: #9ca3af;      /* Gray-400 - Muted text in dark mode */
+  --color-padre-light-dark: #1f2937;      /* Gray-800 - Subtle dark backgrounds */
+  --color-padre-border-dark: #374151;     /* Gray-700 - Dark borders */
+  
+  /* Dynamic colors that change based on theme */
+  --color-padre-primary: var(--color-padre-primary-light);
+  --color-padre-secondary: var(--color-padre-secondary-light);
+  --color-padre-background: var(--color-padre-background-light);
+  --color-padre-muted: var(--color-padre-muted-light);
+  --color-padre-light: var(--color-padre-light-light);
+  --color-padre-border: var(--color-padre-border-light);
   
   --font-family-pacifico: Pacifico, cursive, sans-serif;
+}
+
+/* Dark mode overrides */
+.dark {
+  --color-padre-primary: var(--color-padre-primary-dark);
+  --color-padre-secondary: var(--color-padre-secondary-dark);
+  --color-padre-background: var(--color-padre-background-dark);
+  --color-padre-muted: var(--color-padre-muted-dark);
+  --color-padre-light: var(--color-padre-light-dark);
+  --color-padre-border: var(--color-padre-border-dark);
 }
 
 /* Custom fonts */

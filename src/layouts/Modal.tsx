@@ -70,7 +70,7 @@ const Modal: React.FC<ModalProps> = ({ children }) => {
         role="dialog" 
         aria-modal="true"
         aria-labelledby="modal-title"
-        className="relative bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-auto border border-gray-200 p-6"
+        className="relative bg-padre-background rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-auto border border-padre-border p-6 transition-colors duration-200"
       >
         {children}
       </div>

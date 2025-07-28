@@ -4,7 +4,7 @@ exports[`snapshot with nothing in cart 1`] = `
 <DocumentFragment>
   <aside
     aria-labelledby="cart-heading"
-    class="bg-white rounded-lg shadow-sm p-6 sticky top-8 h-fit border border-padre-border"
+    class="bg-padre-background rounded-lg shadow-sm p-6 sticky top-8 h-fit border border-padre-border transition-colors duration-200"
   >
     <header
       class="mb-6"

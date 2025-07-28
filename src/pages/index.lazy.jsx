@@ -6,7 +6,7 @@ export const Route = createLazyFileRoute("/")({
 
 function Index() {
   return (
-    <main className="min-h-screen bg-padre-background">
+    <main className="min-h-screen bg-padre-background transition-colors duration-200">
       <section className="flex items-center justify-center min-h-screen px-6">
         <div className="text-center max-w-4xl mx-auto">
           <header className="mb-16">

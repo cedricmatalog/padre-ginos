@@ -6,7 +6,7 @@ const Pizza: React.FC<PizzaProps> = ({ description, image, name }) => {
   const [imgError, setImgError] = useState<boolean>(false);
 
   return (
-    <article className="bg-white rounded-lg p-6 shadow-sm border border-padre-border hover:shadow-md transition-shadow duration-200">
+    <article className="bg-padre-background rounded-lg p-6 shadow-sm border border-padre-border hover:shadow-md transition-all duration-200">
       <figure className="mb-4">
         {imgError ? (
           <div className="w-full h-48 bg-padre-light rounded-lg flex flex-col items-center justify-center" role="img" aria-label={`${name} pizza image unavailable`}>

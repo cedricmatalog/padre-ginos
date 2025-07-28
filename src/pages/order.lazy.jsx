@@ -33,9 +33,9 @@ function Order() {
   ];
 
   return (
-    <main className="min-h-screen bg-padre-background">
+    <main className="min-h-screen bg-padre-background transition-colors duration-200">
       {/* Hero Section */}
-      <section className="bg-white border-b border-padre-border py-12 mb-8">
+      <section className="bg-padre-background border-b border-padre-border py-12 mb-8 transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h1 className="font-pacifico text-4xl mb-4 text-padre-primary">Order Your Pizza</h1>
           <p className="text-lg text-padre-muted">Choose from our authentic Italian recipes</p>
@@ -68,10 +68,10 @@ function Order() {
 
             <form action={handleSubmit} aria-label="Pizza order form" className="space-y-8">
               {/* Pizza Type Selection */}
-              <div className="bg-white rounded-lg shadow-sm border border-padre-border p-8">
+              <div className="bg-padre-background rounded-lg shadow-sm border border-padre-border p-8 transition-colors duration-200">
                 <h2 className="font-pacifico text-2xl text-padre-primary mb-6 text-center">Step 1: Choose Your Pizza</h2>
                 <div className="max-w-md mx-auto">
-                  <label htmlFor="pizza-type" className="block text-lg text-gray-800 font-bold mb-4 text-center">
+                  <label htmlFor="pizza-type" className="block text-lg text-padre-primary font-bold mb-4 text-center">
                     Select Your Favorite
                   </label>
                   <select
@@ -79,7 +79,7 @@ function Order() {
                     name="pizza-type"
                     value={pizzaType}
                     onChange={handlePizzaTypeChange}
-                    className="block text-lg p-4 w-full border-2 border-padre-border rounded-lg bg-white focus:border-padre-secondary focus:outline-none transition-colors text-padre-primary"
+                    className="block text-lg p-4 w-full border-2 border-padre-border rounded-lg bg-padre-background focus:border-padre-secondary focus:outline-none transition-colors text-padre-primary"
                     required
                     aria-describedby="pizza-type-help"
                   >
@@ -96,7 +96,7 @@ function Order() {
               </div>
 
               {/* Pizza Size Selection */}
-              <div className="bg-white rounded-lg shadow-sm border border-padre-border p-8">
+              <div className="bg-padre-background rounded-lg shadow-sm border border-padre-border p-8 transition-colors duration-200">
                 <h2 className="font-pacifico text-2xl text-padre-primary mb-6 text-center">Step 2: Pick Your Size</h2>
                 <fieldset>
                   <legend className="sr-only">Pizza Size Selection</legend>
@@ -144,7 +144,7 @@ function Order() {
               </div>
 
               {/* Pizza Preview */}
-              <div className="bg-white rounded-lg shadow-sm border border-padre-border p-8">
+              <div className="bg-padre-background rounded-lg shadow-sm border border-padre-border p-8 transition-colors duration-200">
                 <h2 className="font-pacifico text-2xl text-padre-primary mb-6 text-center">Your Selection</h2>
                 <div className="flex flex-col lg:flex-row items-center gap-8">
                   <div className="flex-1">

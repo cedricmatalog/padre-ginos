@@ -78,8 +78,8 @@ function PastOrders({ loadedPromise, page, setPage }) {
   // }
 
   return (
-    <main className="min-h-screen bg-padre-background">
-      <section className="bg-white border-b border-padre-border py-12 mb-8">
+    <main className="min-h-screen bg-padre-background transition-colors duration-200">
+      <section className="bg-padre-background border-b border-padre-border py-12 mb-8 transition-colors duration-200">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h1 className="font-pacifico text-4xl text-padre-primary mb-4">Past Orders</h1>
           <p className="text-lg text-padre-muted">View your pizza order history</p>

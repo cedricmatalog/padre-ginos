@@ -7,7 +7,7 @@ const PizzaOfTheDay = () => {
 
   if (loading) {
     return (
-      <section className="w-full bg-white rounded-lg p-8 shadow-sm border border-padre-border" aria-labelledby="potd-heading">
+      <section className="w-full bg-padre-background rounded-lg p-8 shadow-sm border border-padre-border transition-colors duration-200" aria-labelledby="potd-heading">
         <header className="text-center mb-8">
           <h2 id="potd-heading" className="font-pacifico text-3xl text-padre-primary mb-4">Pizza of the Day</h2>
           <div className="w-full h-px bg-padre-border"></div>
