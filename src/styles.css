@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* Minimalist color palette - 3 colors only */
+@theme {
+  --color-padre-primary: #1f2937;     /* Dark Gray-800 - Primary text and accents */
+  --color-padre-secondary: #f97316;   /* Orange-500 - Brand color and highlights */
+  --color-padre-background: #ffffff;  /* Pure white - Clean background */
+  --color-padre-muted: #6b7280;      /* Gray-500 - Secondary text */
+  --color-padre-light: #f9fafb;      /* Gray-50 - Subtle backgrounds */
+  --color-padre-border: #e5e7eb;     /* Gray-200 - Borders and dividers */
+  
+  --font-family-pacifico: Pacifico, cursive, sans-serif;
+}
+
+/* Custom fonts */
+@font-face {
+  font-family: 'Pacifico';
+  src: url('/Pacifico-Regular.ttf');
+  font-display: swap;
+}
+
+/* Custom utility classes */
+.font-pacifico {
+  font-family: var(--font-family-pacifico);
+}
+
+/* Minimalist button components */
+.btn-primary {
+  @apply border-2 border-padre-primary bg-transparent text-padre-primary text-lg px-6 py-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-padre-primary hover:text-white font-medium;
+}
+
+.btn-primary:disabled {
+  @apply opacity-50 border-padre-muted text-padre-muted cursor-not-allowed;
+}
+
+.btn-secondary {
+  @apply bg-padre-secondary text-white border-none px-6 py-3 rounded-lg text-lg font-medium cursor-pointer transition-colors duration-200 hover:bg-orange-600;
+}
+
+.btn-secondary:disabled {
+  @apply bg-padre-muted cursor-not-allowed;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Modal specific styles that need to stay */
+#modal:empty {
+  display: none;
+}

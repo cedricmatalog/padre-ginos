@@ -2,23 +2,72 @@
 
 exports[`snapshot with nothing in cart 1`] = `
 <DocumentFragment>
-  <div
-    class="cart"
+  <aside
+    aria-labelledby="cart-heading"
+    class="bg-white rounded-lg shadow-sm p-6 sticky top-8 h-fit border border-padre-border"
   >
-    <h2>
-      Cart
-    </h2>
-    <p>
-      Your cart is empty
-    </p>
-    <p>
-      Total: $0.00
-    </p>
-    <button
-      disabled=""
+    <header
+      class="mb-6"
     >
-      Checkout
-    </button>
-  </div>
+      <h2
+        class="font-pacifico text-2xl text-padre-primary mb-4"
+        id="cart-heading"
+      >
+        Your Cart
+      </h2>
+      <div
+        class="w-full h-px bg-padre-border"
+      />
+    </header>
+    <div
+      class="text-center py-8"
+      role="status"
+    >
+      <p
+        class="text-padre-muted"
+      >
+        Your cart is empty
+      </p>
+    </div>
+    <footer>
+      <div
+        class="bg-padre-light rounded-lg p-4 mb-4"
+      >
+        <div
+          class="flex justify-between items-center"
+        >
+          <span
+            class="font-medium text-padre-primary"
+          >
+            Total:
+          </span>
+          <data
+            class="font-semibold text-xl text-padre-primary"
+            value="0"
+          >
+            $0.00
+          </data>
+        </div>
+        <span
+          class="sr-only"
+        >
+          Total price: $0.00
+        </span>
+      </div>
+      <button
+        aria-describedby="checkout-help"
+        class="btn-secondary w-full disabled:bg-padre-muted disabled:cursor-not-allowed"
+        disabled=""
+      >
+        Checkout 
+      </button>
+      <div
+        class="sr-only"
+        id="checkout-help"
+      >
+        Proceed to payment and complete your order
+      </div>
+    </footer>
+  </aside>
 </DocumentFragment>
 `;

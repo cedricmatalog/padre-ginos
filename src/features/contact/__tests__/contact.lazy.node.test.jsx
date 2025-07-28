@@ -19,9 +19,9 @@ test("can submit contact form", async () => {
     </QueryClientProvider>,
   );
 
-  const nameInput = screen.getByPlaceholderText("Name");
-  const emailInput = screen.getByPlaceholderText("Email");
-  const messageInput = screen.getByPlaceholderText("Message");
+  const nameInput = screen.getByPlaceholderText("Enter your full name");
+  const emailInput = screen.getByPlaceholderText("your.email@example.com");
+  const messageInput = screen.getByPlaceholderText("How can we help you? Tell us about your question or feedback...");
 
   const testData = {
     name: "John Doe",
@@ -36,9 +36,9 @@ test("can submit contact form", async () => {
   const submitButton = screen.getByRole("button");
   submitButton.click();
 
-  const h3 = await screen.findByRole("heading", { level: 3 });
+  const h2 = await screen.findByRole("heading", { level: 2, name: /message sent/i });
 
-  expect(h3.innerText).toContain("Submitted!");
+  expect(h2.innerText).toContain("Message Sent!");
 
   const request = fetchMocker.requests();
   expect(request.length).toBe(1);

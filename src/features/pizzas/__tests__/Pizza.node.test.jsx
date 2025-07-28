@@ -18,14 +18,16 @@ test("alt test renders on Pizza image", () => {
 
   const img = screen.getByRole("img");
   expect(img.src).toBe(src);
-  expect(img.alt).toBe(name);
+  expect(img.alt).toBe(`${name} pizza`);
 });
 
 test("to have default image if none is provided", () => {
+  const name = "something else";
   const screen = render(
-    <Pizza name="something else" description="super cool pizza" />,
+    <Pizza name={name} description="super cool pizza" />,
   );
 
   const img = screen.getByRole("img");
   expect(img.src).not.toBe("");
+  expect(img.alt).toBe(`${name} pizza`);
 });

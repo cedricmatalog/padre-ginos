@@ -65,14 +65,37 @@ export const useOrder = () => {
     setPizzaSize(event.target.value);
   };
   const handleSubmit = () => {
-    setCart((prevCart) => [
-      ...prevCart,
-      {
-        pizza: selectedPizza,
-        size: pizzaSize,
-        price: selectedPizza.sizes[pizzaSize],
-      },
-    ]);
+    setCart((prevCart) => {
+      // Check if the same pizza (type and size) already exists in cart
+      const existingItemIndex = prevCart.findIndex(
+        item => item.pizza.id === selectedPizza.id && item.size === pizzaSize
+      );
+
+      if (existingItemIndex >= 0) {
+        // If it exists, increment the quantity
+        const updatedCart = [...prevCart];
+        const currentQuantity = updatedCart[existingItemIndex].quantity || 1;
+        const newQuantity = currentQuantity + 1;
+        
+        updatedCart[existingItemIndex] = {
+          ...updatedCart[existingItemIndex],
+          quantity: newQuantity,
+          price: selectedPizza.sizes[pizzaSize] * newQuantity,
+        };
+        return updatedCart;
+      } else {
+        // If it doesn't exist, add as new item with quantity 1
+        return [
+          ...prevCart,
+          {
+            pizza: selectedPizza,
+            size: pizzaSize,
+            price: selectedPizza.sizes[pizzaSize],
+            quantity: 1,
+          },
+        ];
+      }
+    });
   };
 
   return {

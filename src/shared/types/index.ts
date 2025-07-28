@@ -23,6 +23,7 @@ export interface CartItem {
   pizza: Pizza;
   size: PizzaSize;
   price: number;
+  quantity: number;
 }
 
 export type Cart = CartItem[];
