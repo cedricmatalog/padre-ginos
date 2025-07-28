@@ -27,14 +27,14 @@ function PastOrdersWrappedWithErrorBoundary() {
       <Suspense
         fallback={
           <main className="min-h-screen bg-padre-background">
-            <section className="bg-white border-b border-padre-border py-12 mb-8">
+            <section className="bg-padre-background border-b border-padre-border py-12 mb-8">
               <div className="max-w-4xl mx-auto px-6 text-center">
                 <h1 className="font-pacifico text-4xl text-padre-primary mb-4">Past Orders</h1>
                 <p className="text-lg text-padre-muted">View your pizza order history</p>
               </div>
             </section>
             <div className="max-w-4xl mx-auto p-6">
-              <div className="bg-white rounded-lg shadow-sm border border-padre-border p-8 text-center">
+              <div className="bg-padre-background rounded-lg shadow-sm border border-padre-border p-8 text-center">
                 <h2 className="font-pacifico text-2xl text-padre-primary mb-4">Loading your orders...</h2>
               </div>
             </div>
@@ -88,7 +88,7 @@ function PastOrders({ loadedPromise, page, setPage }) {
 
       <div className="max-w-4xl mx-auto p-6">
       
-        <section className="bg-white rounded-lg shadow-sm border border-padre-border" aria-label="Order history">
+        <section className="bg-padre-background rounded-lg shadow-sm border border-padre-border" aria-label="Order history">
           <header className="bg-padre-light p-6 border-b border-padre-border">
             <h2 className="font-pacifico text-xl text-padre-primary text-center">Your Order History</h2>
           </header>
@@ -105,7 +105,7 @@ function PastOrders({ loadedPromise, page, setPage }) {
               </thead>
               <tbody>
                 {data.map((order, index) => (
-                  <tr key={order.order_id} className={`border-b border-padre-border hover:bg-padre-light transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-padre-light/50'}`}>
+                  <tr key={order.order_id} className={`border-b border-padre-border hover:bg-padre-light transition-colors ${index % 2 === 0 ? 'bg-padre-background' : 'bg-padre-light/50'}`}>
                     <td className="py-4 px-6 text-center">
                       <button 
                         onClick={() => setSelectedOrder(order.order_id)}
@@ -138,7 +138,7 @@ function PastOrders({ loadedPromise, page, setPage }) {
             Previous
           </button>
           
-          <div className="bg-white rounded-lg px-6 py-3 shadow-sm border border-padre-border">
+          <div className="bg-padre-background rounded-lg px-6 py-3 shadow-sm border border-padre-border">
             <span className="font-pacifico text-padre-secondary" aria-current="page">
               Page {page}
             </span>
@@ -184,7 +184,7 @@ function PastOrders({ loadedPromise, page, setPage }) {
                     </thead>
                     <tbody>
                       {pastOrderData?.orderItems.map((pizza, index) => (
-                        <tr key={`${pizza.pizzaTypeId}_${pizza.size}`} className={`border-b border-padre-border ${index % 2 === 0 ? 'bg-white' : 'bg-padre-light/50'} hover:bg-padre-light transition-colors`}>
+                        <tr key={`${pizza.pizzaTypeId}_${pizza.size}`} className={`border-b border-padre-border ${index % 2 === 0 ? 'bg-padre-background' : 'bg-padre-light/50'} hover:bg-padre-light transition-colors`}>
                           <td className="py-3 px-4 text-center">
                             <img 
                               src={`${BASE_URL}${pizza.image}`} 
